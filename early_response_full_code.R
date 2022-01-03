@@ -1,4 +1,4 @@
-setwd("C:/Users/nuria/OneDrive/Escritorio/Universidad/Collaboration/")
+setwd()
 rm(list=ls())
 load("dat_deident.Rda")
 bob<-dat_deident
