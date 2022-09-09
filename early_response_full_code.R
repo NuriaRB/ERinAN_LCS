@@ -9,7 +9,7 @@ library(semTools)
 
 #Descriptives ######################
 
-#Subject 96 with wrong puntuation for BMI at pre-treatment
+#Subject 96 with wrong punctuation for BMI at pre-treatment
 bob$bmi_0[96] 
 #Subsitute for correct value.
 bob$bmi_0[96] <- 16.85989
