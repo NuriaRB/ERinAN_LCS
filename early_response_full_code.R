@@ -7,26 +7,13 @@ library(psych)
 library(lavaan)
 library(semTools)
 
-#Descriptives######################
+#Descriptives ######################
 
-#Age and sex
-summary(bob[c("age","sex")])
-describe(bob$age)
+#Subject 96 with wrong puntuation for BMI at pre-treatment
+bob$bmi_0[96] 
+#Subsitute for correct value. Does not influence reliability tests for EDEQ
+bob$bmi_0[96] <- 16.85989
 
-#EDEQ and BMI
-describe(bob[c(paste0("edeq_", c(0:2)),paste0("bmi_", c(0, 5, 10)))]) [c("n", "mean", "sd","min", "max", "skew","kurtosis")]
-#Weird behaviour of bmi_0
-
-#Subject 96 with abnormal puntuation for BMI at pre-treatment
-(bob$bmi_0[96]) #prob mistake
-bob[96,] #seems normal subject
-
-#Subsitute abnormal for NA. Does not influence reliability tests for EDEQ
-bob$bmi_0[96] <- NA
-bob[96,]
-describe(bob$bmi_0)
-
-#Repeat descriptives ##############################
 #Age and sex
 summary(bob[c("age","sex")])
 describe(bob$age)
@@ -35,14 +22,15 @@ describe(bob$age)
 describe(bob[c(paste0("edeq_", c(0:2)),paste0("bmi_", c(0, 5, 10)))]) [c("n", "mean", "sd","min", "max", "skew","kurtosis")]
 
 #Correlations
-round(cor(bob[c(paste0("edeq_", c(0:2)),paste0("bmi_", c(0, 5, 10)))], use="pairwise.complete.obs"),3)
+round(cor(bob[c(paste0("edeq_", c(0:2)),paste0("bmi_", c(0, 5, 10)))],
+          use="pairwise.complete.obs"),3)
 
 #Correlation tests: BMI and EDEQ in pre-ttm, 5weeks, 10weeks
 cor.test(bob$bmi_0, bob$edeq_0, method="pearson", conf.level = 0.95)
 cor.test(bob$bmi_5, bob$edeq_1, method="pearson", conf.level = 0.95)
 cor.test(bob$bmi_10, bob$edeq_2, method="pearson", conf.level = 0.95)
 
-#Standardize variables######################
+#Standardize variables ######################
 #BMI
 bmiMn <- mean(bob$bmi_0, na.rm = TRUE) 
 bmiSd <- sd(bob$bmi_0, na.rm = TRUE)
@@ -64,9 +52,8 @@ bob[newedeqvars] <- (bob[edeqvars] - edeqMn)/edeqSd # Standardization
 rm(bmiMn,bmiSd,bmivars,edeqMn,edeqSd,edeqvars)
 
 #Descriptive for standardized variables
-
-describe(bob[c("edeq_0_std","edeq_1_std", "edeq_2_std")]) [c("n", "mean", "sd","skew")]
-describe(bob[c("bmi_0_std","bmi_5_std", "bmi_10_std")]) [c("n", "mean", "sd","skew")]
+describe(bob[newbmivars])[c("n", "mean", "sd","skew")]
+describe(bob[newedeqvars])[c("n", "mean", "sd","skew")]
 
 # Re-name for the code ##################
 
