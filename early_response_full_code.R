@@ -11,7 +11,7 @@ library(semTools)
 
 #Subject 96 with wrong puntuation for BMI at pre-treatment
 bob$bmi_0[96] 
-#Subsitute for correct value. Does not influence reliability tests for EDEQ
+#Subsitute for correct value.
 bob$bmi_0[96] <- 16.85989
 
 #Age and sex
