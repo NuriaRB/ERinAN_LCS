@@ -1,5 +1,3 @@
-setwd()
-rm(list=ls())
 load("dat_deident.Rda")
 bob<-dat_deident
 #Packagues
@@ -129,20 +127,20 @@ ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
 # Latent variances and covariances
-yInt ~~ yInV * yInt   #varianza interseccion Y
-ySlp ~~ 0 * ySlp      #varianza pendiente Y
-yInt ~~ 0 * ySlp      #covarianza int slp y
+yInt ~~ yInV * yInt    
+ySlp ~~ 0 * ySlp      
+yInt ~~ 0 * ySlp      
 
-xInt ~~ xInV * xInt   #varianza intersecci0n X
-xSlp ~~ 0 * xSlp      #varianza pendiente X
-xInt ~~ 0 * xSlp      #covarianza int slp x
+xInt ~~ xInV * xInt    
+xSlp ~~ 0 * xSlp      
+xInt ~~ 0 * xSlp      
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ 0 * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Residual variance (Errores (varianzas) de latentes)
+# Residual variance
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -160,7 +158,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -169,7 +167,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -198,7 +196,7 @@ y3	=~ 1* oy3
 x1	=~ 1* ox1
 x2	=~ 1* ox2
 x3	=~ 1* ox3
-
+#M1
 # Auto-regression
 y2	~ 1* y1
 y3	~ 1* y2
@@ -213,7 +211,6 @@ dy3	 =~ 1* y3
 dx2	 =~ 1* x2
 dx3	 =~ 1* x3
 
-#M1 Estimaci?n de par?metro de autorregresion nivel-cambio
 # Auto-proportions
 dy2	 ~ b_y * y1
 dy3	 ~ b_y * y2
@@ -252,20 +249,20 @@ ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
 # Latent variances and covariances
-yInt ~~ yInV * yInt #varianza intersecci?n Y
-ySlp ~~ 0 * ySlp #varianza pendiente Y
-yInt ~~ 0 * ySlp #covarianza int slp y
+yInt ~~ yInV * yInt 
+ySlp ~~ 0 * ySlp 
+yInt ~~ 0 * ySlp 
 
-xInt ~~ xInV * xInt #varianza intersecci?n X
-xSlp ~~ 0 * xSlp #varianza pendiente X
-xInt ~~ 0 * xSlp #covarianza int slp x
+xInt ~~ xInV * xInt 
+xSlp ~~ 0 * xSlp 
+xInt ~~ 0 * xSlp 
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ 0 * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -283,7 +280,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -292,7 +289,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -344,7 +341,7 @@ dy3	 ~ b_y * y2
 dx2	 ~ b_x * x1
 dx3	 ~ b_x * x2
 
-#M2 Estimaci?n de par?metro de emparejamiento nivel-cambio
+#M2 
 # Couplings
 dy2	 ~ g_y * x1
 dy3	 ~ g_y * x2
@@ -376,20 +373,20 @@ ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
 # Latent variances and covariances
-yInt ~~ yInV * yInt #varianza intersecci?n Y
-ySlp ~~ 0 * ySlp #varianza pendiente Y
-yInt ~~ 0 * ySlp #covarianza int slp y
+yInt ~~ yInV * yInt 
+ySlp ~~ 0 * ySlp 
+yInt ~~ 0 * ySlp 
 
-xInt ~~ xInV * xInt #varianza intersecci?n X
-xSlp ~~ 0 * xSlp #varianza pendiente X
-xInt ~~ 0 * xSlp #covarianza int slp x
+xInt ~~ xInV * xInt 
+xSlp ~~ 0 * xSlp 
+xInt ~~ 0 * xSlp 
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ 0 * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -407,7 +404,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -416,7 +413,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -475,8 +472,8 @@ dy3	 ~ g_y * x2
 dx2	 ~ g_x * y1
 dx3	 ~ g_x * y2
 
-#M3 estimaci?n de par?metro de autorregresion del cambio
-#Phi (autorregresion del cambio) 
+#M3 
+#Phi (change-to-chan self-feedback) 
 dy3	 ~ p_y * dy2
 
 dx3	 ~ p_x * dx2
@@ -505,20 +502,20 @@ ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
 # Latent variances and covariances
-yInt ~~ yInV * yInt #varianza intersecci?n Y
-ySlp ~~ 0 * ySlp #varianza pendiente Y
-yInt ~~ 0 * ySlp #covarianza int slp y
+yInt ~~ yInV * yInt 
+ySlp ~~ 0 * ySlp 
+yInt ~~ 0 * ySlp 
 
-xInt ~~ xInV * xInt #varianza intersecci?n X
-xSlp ~~ 0 * xSlp #varianza pendiente X
-xInt ~~ 0 * xSlp #covarianza int slp x
+xInt ~~ xInV * xInt 
+xSlp ~~ 0 * xSlp 
+xInt ~~ 0 * xSlp 
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ 0 * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -536,7 +533,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -545,7 +542,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -604,13 +601,13 @@ dy3	 ~ g_y * x2
 dx2	 ~ g_x * y1
 dx3	 ~ g_x * y2
 
-#Phi (autorregresion del cambio) 
+#Phi (change-to-change self-feedback) 
 dy3	 ~ p_y * dy2
 
 dx3	 ~ p_x * dx2
 
-#M4 estimaci?n de par?metro de emperejamiento cambio-cambio
-#Ksi (coupling del cambio)
+#M4 
+#Ksi (change-to-change coupling)
 dy3	 ~ k_y * dx2
 
 dx3	 ~ k_x * dy2
@@ -639,20 +636,20 @@ ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
 # Latent variances and covariances
-yInt ~~ yInV * yInt #varianza intersecci?n Y
-ySlp ~~ 0 * ySlp #varianza pendiente Y
-yInt ~~ 0 * ySlp #covarianza int slp y
+yInt ~~ yInV * yInt
+ySlp ~~ 0 * ySlp 
+yInt ~~ 0 * ySlp 
 
-xInt ~~ xInV * xInt #varianza intersecci?n X
-xSlp ~~ 0 * xSlp #varianza pendiente X
-xInt ~~ 0 * xSlp #covarianza int slp x
+xInt ~~ xInV * xInt
+xSlp ~~ 0 * xSlp 
+xInt ~~ 0 * xSlp 
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ 0 * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -670,7 +667,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -679,7 +676,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -738,12 +735,12 @@ dy3	 ~ g_y * x2
 dx2	 ~ g_x * y1
 dx3	 ~ g_x * y2
 
-#Phi (autorregresion del cambio) 
+#Phi (c-t-c Self-feedback) 
 dy3	 ~ p_y * dy2
 
 dx3	 ~ p_x * dx2
 
-#Ksi (coupling del cambio)
+#Ksi (c-t-c coupling)
 dy3	 ~ k_y * dx2
 
 dx3	 ~ k_x * dy2
@@ -771,22 +768,22 @@ ox1 ~ 0 * 1
 ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
-#M5 liberaci?n de varianzas y covarianzas xy del componente aditivo
+#M5 
 # Latent variances and covariances
-yInt ~~ yInV   * yInt #varianza intersecci?n Y
-ySlp ~~ ySlV   * ySlp #varianza pendiente Y
-yInt ~~ 0* ySlp #covarianza int slp y
+yInt ~~ yInV   * yInt 
+ySlp ~~ ySlV   * ySlp 
+yInt ~~ 0* ySlp 
 
-xInt ~~ xInV   * xInt #varianza intersecci?n X
-xSlp ~~ xSlpV * xSlp #varianza pendiente X
-xInt ~~ 0 * xSlp #covarianza int slp x
+xInt ~~ xInV   * xInt 
+xSlp ~~ xSlpV * xSlp 
+xInt ~~ 0 * xSlp 
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ xySlpCv * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -804,7 +801,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -813,7 +810,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -872,12 +869,12 @@ dy3	 ~ g_y * x2
 dx2	 ~ g_x * y1
 dx3	 ~ g_x * y2
 
-#Phi (autorregresion del cambio) 
+#Phi (c-t-c self-feedback) 
 dy3	 ~ p_y * dy2
 
 dx3	 ~ p_x * dx2
 
-#Ksi (coupling del cambio)
+#Ksi (c-t-c coupling)
 dy3	 ~ k_y * dx2
 
 dx3	 ~ k_x * dy2
@@ -906,13 +903,13 @@ ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
 # Latent variances and covariances
-yInt ~~ yInV   * yInt #varianza intersecci?n Y
-ySlp ~~ ySlV   * ySlp #varianza pendiente Y
-yInt ~~ yInSlCv* ySlp #covarianza int slp y
+yInt ~~ yInV   * yInt 
+ySlp ~~ ySlV   * ySlp 
+yInt ~~ yInSlCv* ySlp 
 
-xInt ~~ xInV   * xInt #varianza intersecci?n X
-xSlp ~~ xSlpV * xSlp #varianza pendiente X
-xInt ~~ xInSlCv * xSlp #covarianza int slp x
+xInt ~~ xInV   * xInt 
+xSlp ~~ xSlpV * xSlp 
+xInt ~~ xInSlCv * xSlp
 
 #M6 Liberaci?n de covarianzas:
 yInt ~~ yxInCv   * xInt
@@ -920,7 +917,7 @@ ySlp ~~ xySlCv * xSlp
 yInt ~~ yIntxSlCv * xSlp
 xInt ~~ xInySlCv   * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -938,7 +935,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -947,7 +944,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
@@ -1048,20 +1045,20 @@ dy3	 ~ b_y * y2
 dx2	 ~ b_x * x1
 dx3	 ~ b_x * x2
 
-# Couplings RESTRINGIDOS
+# Couplings RESTRICTION
 dy2	 ~ 0 * x1
 dy3	 ~ 0 * x2
 
 dx2	 ~ 0 * y1
 dx3	 ~ 0 * y2
 
-#Phi (autorregresion del cambio) 
+#Phi (c-t-c self-feedback) 
 dy3	 ~ p_y * dy2
 
 dx3	 ~ p_x * dx2
 
-#RESTRICCION
-#Ksi (coupling del cambio)
+#RESTRICTION
+#Ksi (c-t-c coupling)
 dy3	 ~ 0 * dx2
 
 dx3	 ~ 0 * dy2
@@ -1089,22 +1086,22 @@ ox1 ~ 0 * 1
 ox2 ~ 0 * 1
 ox3 ~ 0 * 1
 
-#M5 liberaci?n de varianzas y covarianzas xy del componente aditivo
+#M5 
 # Latent variances and covariances
-yInt ~~ yInV   * yInt #varianza intersecci?n Y
-ySlp ~~ ySlV   * ySlp #varianza pendiente Y
-yInt ~~ 0* ySlp #covarianza int slp y
+yInt ~~ yInV   * yInt
+ySlp ~~ ySlV   * ySlp
+yInt ~~ 0* ySlp 
 
-xInt ~~ xInV   * xInt #varianza intersecci?n X
-xSlp ~~ xSlpV * xSlp #varianza pendiente X
-xInt ~~ 0 * xSlp #covarianza int slp x
+xInt ~~ xInV   * xInt
+xSlp ~~ xSlpV * xSlp 
+xInt ~~ 0 * xSlp 
 
 yInt ~~ xyIntCv * xInt
 ySlp ~~ xySlpCv * xSlp
 yInt ~~ 0 * xSlp
 xInt ~~ 0 * ySlp
 
-#Errores (varianzas) de latentes
+# Latent variances
 y1  ~~ 0 * y1
 y2  ~~ 0 * y2
 y3  ~~ 0 * y3
@@ -1122,7 +1119,7 @@ dx3  ~~ 0 * dx3
 dy2 ~~ 0 * dx2
 dy3 ~~ 0 * dx3
 
-#Error de medida observada (MerX, MerY)
+# Measurement error (MerX, MerY)
 oy1  ~~ MerY * oy1
 oy2  ~~ MerY * oy2
 oy3  ~~ MerY * oy3
@@ -1131,7 +1128,7 @@ ox1  ~~ MerX * ox1
 ox2  ~~ MerX * ox2
 ox3  ~~ MerX * ox3
 
-#Covarianza de errores de medida observada (MerXY)
+# Measurement error covariances (MerXY)
 oy1  ~~ MerXY * ox1
 oy2  ~~ MerXY * ox2
 oy3  ~~ MerXY * ox3
